@@ -1,5 +1,4 @@
 from django.shortcuts import render
-from django.core.mail import send_mail
 # Create your views here.
 
 def home(request):
@@ -40,14 +39,6 @@ def appointment(request):
         your_date = request.POST['your-date']
         your_message = request.POST['your-message']
 
-        appointment = 'Name: ' + your_name +  ' /n Phone: '+ your_phone +  ' /n Email: ' + your_email +  ' /n Address: ' + your_address + ' /n Schedule: ' + your_schedule + ' /n Date: ' + your_date +  '/n Message: ' + your_message
-
-        #send_mail(
-            #'Appointment Request',
-            #appointment,
-            #your_email,
-            #['kenbryan.escano@gmail.com'],
-        #)
 
         return render(request, 'appointment.html',{
             'your_name' : your_name,
