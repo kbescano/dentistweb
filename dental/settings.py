@@ -18,7 +18,7 @@ SECRET_KEY = 'kp%$m2h4oymzj0oh_%*++05-5@6u@nkb==do3f0p#)l-#&ff(l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [*]
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -128,3 +128,19 @@ STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStacticFilesStorage'
 # Email Settings
 
 django_heroku.settings(locals())
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
+    },
+}
